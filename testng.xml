@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="AmazonTestSuite">
+	<parameter name="browser" value="firefox" />
+	<parameter name="amazonUrl" value="https://www.amazon.in" />
+	<parameter name="productName" value="iphone 16" />
+	<test name="AmazonTest">
+
+		<classes>
+			<class name="tests.HomePageTests" />
+			<class name="tests.SearchTests" />
+			<class name="tests.ProductInteractionTests" />
+			<class name="tests.ProductDetailsTests" />
+		</classes>
+	</test>
+</suite>
+

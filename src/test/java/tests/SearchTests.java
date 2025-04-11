@@ -2,12 +2,13 @@ package tests;
 
 import static org.testng.Assert.assertTrue;
 
-import org.testng.Assert;
+
 import org.testng.Reporter;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 public class SearchTests extends BaseTest {
+
 
 	@Parameters({ "productName" })
     @Test(groups = { "search" })
@@ -18,6 +19,7 @@ public class SearchTests extends BaseTest {
 
 
 	
+
 	@Test(groups = { "search" },dependsOnMethods = "productSearch")
 	public void get_Count() {
 		System.out.println("iPhone list is displayed");
@@ -46,7 +48,7 @@ public class SearchTests extends BaseTest {
 			System.out.println("Range shown: " + range);
 			System.out.println("Total iPhones listed: " + totalCount);
 
-			// Simple format check
+
 			assertTrue(actualResult.contains("results for \"iphone 16\""), "Expected text not found.");
 
 		} catch (Exception e) {

@@ -41,13 +41,6 @@ public class ProductDetailsTests extends BaseTest {
     public void verify_ram_memory() {
 
 
-//		String expectedResult = "128 GB";
-//		String actualResult = demoTest.getRAM_Memory();
-//
-//		Reporter.log("Expected Result = " + expectedResult);
-//		Reporter.log("Actual Result = " + actualResult);
-//
-//		assertTrue(actualResult.equals(expectedResult), "Mismatch in the ram memory,");
 
     	String actualResult = demoTest.getRAM_Memory();
 	    
@@ -68,13 +61,7 @@ public class ProductDetailsTests extends BaseTest {
     public void verify_memory_capacity() {
 
 
-//		String expectedResult = "128 GB";
-//		String actualResult = demoTest.getMemory_Capacity();
-//
-//		Reporter.log("Expected Result = " + expectedResult);
-//		Reporter.log("Actual Result = " + actualResult);
-//
-//		assertTrue(actualResult.equals(expectedResult), "Mismatch in the memory capacity,");
+
     	
     	String actualResult = demoTest.getMemory_Capacity();
 	    
@@ -93,13 +80,6 @@ public class ProductDetailsTests extends BaseTest {
     public void verify_screen_size() {
 
 
-//		String expectedResult = "6.1 Inches";
-//		String actualResult = demoTest.getScreens_Size();
-//
-//		Reporter.log("Expected Result = " + expectedResult);
-//		Reporter.log("Actual Result = " + actualResult);
-//
-//		assertTrue(actualResult.equals(expectedResult), "Mismatch in the screensize,");
     	
     	String actualResult = demoTest.getScreens_Size();
 	    

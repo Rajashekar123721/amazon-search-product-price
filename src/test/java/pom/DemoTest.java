@@ -84,29 +84,24 @@ public class DemoTest {
 
 	}
 
-	
 	public String getProductPrice() {
-	    try {
-	        if (productPrices == null || productPrices.isEmpty()) {
-	            return "No price elements found!";
-	        }
+		try {
+			if (productPrices == null || productPrices.isEmpty()) {
+				return "No price elements found!";
+			}
 
-	        WebElement lastPriceElement = productPrices.get(productPrices.size() - 1);
+			WebElement lastPriceElement = productPrices.get(productPrices.size() - 1);
 
-	        wait.until(ExpectedConditions.visibilityOf(lastPriceElement)); // Ensure it's visible
+			wait.until(ExpectedConditions.visibilityOf(lastPriceElement)); // Ensure it's visible
 
-	        String priceText = lastPriceElement.getText().trim();
-	        return priceText.isEmpty() ? "Last price is empty!" : priceText;
+			String priceText = lastPriceElement.getText().trim();
+			return priceText.isEmpty() ? "Last price is empty!" : priceText;
 
-	    } catch (TimeoutException e) {
-	        return "Timed out waiting for price element!";
-	    }
+		} catch (TimeoutException e) {
+			return "Timed out waiting for price element!";
+		}
 	}
 
-
-	
-	
-	
 	public String getCurrencySymbol() {
 		if (!currencySymbol.isEmpty()) {
 			return currencySymbol.get(4).getText();
@@ -115,17 +110,6 @@ public class DemoTest {
 		}
 	}
 
-//	public String getBrand() {
-//		if (!productDetails.isEmpty()) {
-//			WebElement firstDetail = productDetails.get(0);
-//
-//			Actions actions = new Actions(driver);
-//			actions.moveToElement(firstDetail).perform(); // Scrolls until the element is visible
-//			return firstDetail.getText(); // Get text after scrolling
-//		} else {
-//			return "No elements found!";
-//		}
-//	}
 
 	public String getBrand() {
 		if (!productDetails.isEmpty()) {
@@ -137,13 +121,11 @@ public class DemoTest {
 			return "No elements found!";
 		}
 	}
-	
-	
-	
+
 	public String getOperatingSystem() {
 		if (!productDetails.isEmpty()) {
 			WebElement secondDetail = productDetails.get(1);
-			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", secondDetail);
+			//((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", secondDetail);
 
 			return secondDetail.getText().trim();
 		} else {
@@ -152,36 +134,61 @@ public class DemoTest {
 	}
 
 	public String getRAM_Memory() {
-		if (!productDetails.isEmpty()) {
-			WebElement thirdDetail = productDetails.get(2);
-			Actions actions = new Actions(driver);
-			actions.moveToElement(thirdDetail).perform(); // Scrolls until the element is visible
-			return thirdDetail.getText(); // Get text after scrolling
-		} else {
-			return "No elements found!";
-		}
+
+		
+		 int count = 0;
+
+		    for (WebElement detail : productDetails) {
+		        String text = detail.getText().trim().toLowerCase();
+
+		        // Match common storage patterns like '128 gb', '1 tb', etc.
+		        if (text.matches(".*\\d+\\s?(gb|tb).*")) {
+		            count++;
+		            if (count == 1) {
+		               // ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", detail);
+		                return detail.getText(); // return original (non-lowercased) text
+		            }
+		        }
+		    }
+
+		    return "RAM Memory Installed Size not found!";
 	}
+
+
 
 	public String getMemory_Capacity() {
-		if (!productDetails.isEmpty()) {
-			WebElement fourthDetail = productDetails.get(3);
-			Actions actions = new Actions(driver);
-			actions.moveToElement(fourthDetail).perform(); // Scrolls until the element is visible
-			return fourthDetail.getText(); // Get text after scrolling
-		} else {
-			return "No elements found!";
-		}
+	    int count = 0;
+
+	    for (WebElement detail : productDetails) {
+	        String text = detail.getText().trim().toLowerCase();
+
+	        // Match common storage patterns like '128 gb', '1 tb', etc.
+	        if (text.matches(".*\\d+\\s?(gb|tb).*")) {
+	            count++;
+	            if (count == 2) {
+	                //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", detail);
+	                return detail.getText(); // return original (non-lowercased) text
+	            }
+	        }
+	    }
+
+	    return "Memory Storage Capacity not found!";
 	}
+
 
 	public String getScreens_Size() {
-		if (!productDetails.isEmpty()) {
-			WebElement fifthDetail = productDetails.get(4);
-			Actions actions = new Actions(driver);
-			actions.moveToElement(fifthDetail).perform(); // Scrolls until the element is visible
-			return fifthDetail.getText(); // Get text after scrolling
-		} else {
-			return "No elements found!";
-		}
-	}
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	    for (WebElement detail : productDetails) {
+	    	
+	    	 wait.until(ExpectedConditions.visibilityOf(detail)); // Wait until element is visible
+	        String text = detail.getText().trim().toLowerCase();
 
+	        if ((text.contains("inch") || text.contains("inches"))) {
+	            //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", detail);
+	            return detail.getText();
+	        }
+	    }
+	    return "Screen size not found!";
+	}
 }

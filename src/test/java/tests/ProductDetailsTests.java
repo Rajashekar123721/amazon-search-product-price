@@ -16,6 +16,7 @@ public class ProductDetailsTests extends BaseTest {
 
 		Reporter.log("Expected Result = " + expectedResult);
 		Reporter.log("Actual Result = " + actualResult);
+		System.out.println("Detected Brand Name :"+actualResult);
 
 		assertTrue(actualResult.equals(expectedResult), "Mismatch in the brand,");
 
@@ -78,8 +79,6 @@ public class ProductDetailsTests extends BaseTest {
 
     @Test(groups = { "product-details" })
     public void verify_screen_size() {
-
-
     	
     	String actualResult = demoTest.getScreens_Size();
 	    

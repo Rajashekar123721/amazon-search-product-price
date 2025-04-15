@@ -1,1 +1,0 @@
-{"uuid":"207bfd7d-e5ef-4e47-b820-85b3bc23c08c","name":"AmazonTestSuite","children":["f65cfd9b-ac6c-4e64-8a2d-1587e6ab74dc"],"befores":[{"name":"setup","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1744193455600,"stop":1744193463996}],"afters":[],"start":1744193455550,"stop":1744193471282}

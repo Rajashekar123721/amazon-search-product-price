@@ -22,7 +22,7 @@ public class BaseTest {
         driver = common.getBrowser();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         
-       // demoTest = new DemoTest(driver);
+      
     }
 
     
@@ -31,8 +31,8 @@ public class BaseTest {
         demoTest = new DemoTest(driver);  // ✅ Ensures it's always ready
     }
     
-//    @AfterSuite
-//    public void teardown() {
-//        common.quitBrowser();
-//    }
+    @AfterSuite
+    public void teardown() {
+        common.quitBrowser();
+    }
 }
